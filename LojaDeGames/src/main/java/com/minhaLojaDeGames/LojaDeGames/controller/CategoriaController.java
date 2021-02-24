@@ -21,7 +21,7 @@ import com.minhaLojaDeGames.LojaDeGames.model.Categoria;
 
 
 @RestController
-@RequestMapping("/Categoria")
+@RequestMapping("/categoria")
 @CrossOrigin("*")
 public class CategoriaController {
 	
@@ -44,7 +44,7 @@ public class CategoriaController {
     
     public ResponseEntity <List<Categoria>> GetByTitulo(@PathVariable String categoria){
     	
-    	return ResponseEntity.ok(repository.findAllBycategoriaContainingIgnoreCase(categoria));
+    	return ResponseEntity.ok(repository.findAllByCategoriaContainingIgnoreCase(categoria));
     }
 	@PostMapping
 	public ResponseEntity<Categoria> post (@RequestBody Categoria categoria){

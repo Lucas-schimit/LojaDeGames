@@ -2,14 +2,12 @@ package com.minhaLojaDeGames.LojaDeGames.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
@@ -23,11 +21,11 @@ public class Produto {
 	private Long id;
 	
 	@NotNull
-	private String produto_descricao;
+	private String produtoDescricao;
 	
-	@ManyToMany(mappedBy = "produto", cascade = CascadeType.ALL)
+	@ManyToOne
 	@JsonIgnoreProperties("produto")
-	private List<Categoria> Categoria;
+	private List<Categoria> categoria;
 
 	public Long getId() {
 		return id;
@@ -38,20 +36,28 @@ public class Produto {
 	}
 
 	public String getProduto_descricao() {
-		return produto_descricao;
+		return produtoDescricao;
 	}
 
 	public void setProduto_descricao(String produto_descricao) {
-		this.produto_descricao = produto_descricao;
+		this.produtoDescricao = produto_descricao;
+	}
+
+	public String getProdutoDescricao() {
+		return produtoDescricao;
+	}
+
+	public void setProdutoDescricao(String produtoDescricao) {
+		this.produtoDescricao = produtoDescricao;
 	}
 
 	public List<Categoria> getCategoria() {
-		return Categoria;
+		return categoria;
 	}
 
 	public void setCategoria(List<Categoria> categoria) {
-		Categoria = categoria;
+		this.categoria = categoria;
 	}
-	
-	
+
+
 }

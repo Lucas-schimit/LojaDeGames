@@ -1,13 +1,13 @@
 package com.minhaLojaDeGames.LojaDeGames.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
@@ -25,11 +25,11 @@ public class Categoria {
 	private String categoria;
 	
 	@NotNull
-	@Size(min=20, max=600)
-	private String descricao_categoria;
+	@Size(min=20, max=100)
+	private String descricaoCategoria;
 	
-	@ManyToMany
-	@JsonIgnoreProperties("Categoria")
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("categoria")
 	private Produto produto;
 
 	public Produto getProduto() {
@@ -57,11 +57,11 @@ public class Categoria {
 	}
 
 	public String getDescricao_categoria() {
-		return descricao_categoria;
+		return descricaoCategoria;
 	}
 
 	public void setDescricao_categoria(String descricao_categoria) {
-		this.descricao_categoria = descricao_categoria;
+		this.descricaoCategoria = descricao_categoria;
 	}
 	
 	
