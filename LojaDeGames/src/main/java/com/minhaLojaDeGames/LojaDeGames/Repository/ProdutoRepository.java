@@ -1,5 +1,13 @@
 package com.minhaLojaDeGames.LojaDeGames.Repository;
 
-public interface ProdutoRepository {
+import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.minhaLojaDeGames.LojaDeGames.model.Produto;
+
+@Repository
+public interface ProdutoRepository extends JpaRepository<Produto, Long> {
+	public List<Produto> findAllByproduto_descricaoContainingIgnoreCase (String produto_descricao);
 }
